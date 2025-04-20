@@ -48,6 +48,7 @@ public class Main {
 
                 String action = switch (mainOptionSelected) {
                     //lOGIN OPTION
+                    //AS A USER I WANT TO BE ABLE TO LOG INTO MY EXISTING BANK ACCOUNT
                     case 1 -> {
                         System.out.println("Option 1 Selected");
                         accounts.setMainBool(false);
@@ -58,6 +59,7 @@ public class Main {
                         yield "Login view";
                     }
                     //CREATE ACCOUNT OPTION
+                    //AS A USER I WANT TO BE ABLE TO CREATE A BANK ACCOUNT
                     case 2 -> {
                         System.out.println("Option 2 Selected");
                         accounts.setMainBool(false);

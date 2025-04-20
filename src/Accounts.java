@@ -151,11 +151,33 @@ public class Accounts implements IBankAccount{
                         //Use of Records class called Users
                         userAccounts.add(new Users(usernameEntered, passwordEntered, accountType, 0.0F));
 
-                        //The use of streams
-                        System.out.println("Accounts usernames arraylist: "+ usernamesList.stream().skip(usernamesList.size() - 1).findFirst().orElse(null));
-                        System.out.println("Accounts passwords arraylist: "+ passwordsList.stream().skip(passwordsList.size() - 1).findFirst().orElse(null));
-                        System.out.println("Accounts account type arraylist: "+ accountTypeList.stream().skip(accountTypeList.size() - 1).findFirst().orElse(null));
+                        //The use of streams to print out the account that was just created  back to the user who created it
+                        System.out.println(
+                                "Accounts username: " +
+                                        userAccounts.stream()
+                                                .skip(userAccounts.size() - 1)
+                                                .map(Users::username)
+                                                .findFirst()
+                                                .orElse(null)
+                        );
 
+                        System.out.println(
+                                "Accounts password: " +
+                                        userAccounts.stream()
+                                                .skip(userAccounts.size() - 1)
+                                                .map(Users::password)
+                                                .findFirst()
+                                                .orElse(null)
+                        );
+
+                        System.out.println(
+                                "Accounts account type: " +
+                                        userAccounts.stream()
+                                                .skip(userAccounts.size() - 1)
+                                                .map(Users::accountType)
+                                                .findFirst()
+                                                .orElse(null)
+                        );
 
                         isMainMenu = true;
                         isCreateView = false;
@@ -241,46 +263,21 @@ public class Accounts implements IBankAccount{
     private Boolean validateLogIntoAccount(String usrname, String passwrd)
     {
         if (userAccounts != null && !userAccounts.isEmpty()) {
-            // Use streams to find the user that matches the username and password
+            // Use streams to find the user account that matches the username and password entered in login
             Optional<Users> matchingUser  = userAccounts.stream()
                     .filter(user -> user.username().equals(usrname) && user.password().equals(passwrd))
-                    .findFirst(); // Terminal operation to get the first matching user
+                    .findFirst();
 
-            // Check if a matching user is found
+            // Check if a matching user is found, and get the info
             if (matchingUser.isPresent()) {
-                Users user = matchingUser .get(); // Get the matching user
-                indexOfAccount = userAccounts.indexOf(user); // Get the index of the matching user
-                accountType = accountTypeList.get(indexOfAccount); // Get the account type
-                balanceFloat = balanceList.get(indexOfAccount); // Get the balance
-                return true; // Return true if a match is found
+                Users user = matchingUser .get();
+                indexOfAccount = userAccounts.indexOf(user);
+                accountType = accountTypeList.get(indexOfAccount);
+                balanceFloat = balanceList.get(indexOfAccount);
+                return true;
             }
         }
         return false;
-
-//        if(usernamesList != null && passwordsList != null) {
-//            if (!usernamesList.isEmpty() && !passwordsList.isEmpty()) {
-//                for(int i = 0; i < usernamesList.size(); i++){
-//                    if(usernamesList.get(i).equals(usrname)){
-//                        usernameMatches = true;
-//                        ia = i;
-//
-//                    }
-//
-//                }
-//                for(int i =0; i < passwordsList.size(); i++){
-//                    if(passwordsList.get(i).equals(passwrd)){
-//                        passwordMatches = true;
-//                        ia = i;
-//                    }
-//                }
-//                indexOfAccount = ia;
-//                accountType = accountTypeList.get(indexOfAccount);
-//                balanceFloat = balanceList.get(indexOfAccount);
-//            }
-//        }
-
-
-
     }
 
     private void ViewUsersAccount(int index, String username, AccountType accType, Float accBalanceFl){
@@ -344,6 +341,7 @@ public class Accounts implements IBankAccount{
         }
     }
 
+    //AS A USER I WANT TO BE ABLE TO DEPOSIT/WITHDRAW MONEY FROM MY EXISTING BANK ACCOUNT
     @Override
     public void DepositMoney(int index,float amount)
     {
