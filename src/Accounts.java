@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.Scanner;
 
 public class Accounts implements IBankAccount{
@@ -29,6 +30,8 @@ public class Accounts implements IBankAccount{
     private ArrayList<String> passwordsList  = new ArrayList<>();
     private ArrayList<AccountType> accountTypeList = new ArrayList<>();
     private ArrayList<Float> balanceList = new ArrayList<>();
+
+    private ArrayList<Users> userAccounts = new ArrayList<>();
 
     private Validator validator;
     public Accounts(){
@@ -145,6 +148,9 @@ public class Accounts implements IBankAccount{
                         accountTypeList.add(accountType);
                         balanceList.add(0.0F);
 
+                        //Use of Records class called Users
+                        userAccounts.add(new Users(usernameEntered, passwordEntered, accountType, 0.0F));
+
                         //The use of streams
                         System.out.println("Accounts usernames arraylist: "+ usernamesList.stream().skip(usernamesList.size() - 1).findFirst().orElse(null));
                         System.out.println("Accounts passwords arraylist: "+ passwordsList.stream().skip(passwordsList.size() - 1).findFirst().orElse(null));
@@ -234,37 +240,46 @@ public class Accounts implements IBankAccount{
 
     private Boolean validateLogIntoAccount(String usrname, String passwrd)
     {
-        boolean usernameMatches = false;
-        boolean passwordMatches = false;
-        int ia = 0;
-        if(usernamesList != null && passwordsList != null) {
-            if (!usernamesList.isEmpty() && !passwordsList.isEmpty()) {
-                for(int i = 0; i < usernamesList.size(); i++){
-                    if(usernamesList.get(i).equals(usrname)){
-                        usernameMatches = true;
-                        ia = i;
+        if (userAccounts != null && !userAccounts.isEmpty()) {
+            // Use streams to find the user that matches the username and password
+            Optional<Users> matchingUser  = userAccounts.stream()
+                    .filter(user -> user.username().equals(usrname) && user.password().equals(passwrd))
+                    .findFirst(); // Terminal operation to get the first matching user
 
-                    }
-
-                }
-                for(int i =0; i < passwordsList.size(); i++){
-                    if(passwordsList.get(i).equals(passwrd)){
-                        passwordMatches = true;
-                        ia = i;
-                    }
-                }
-                indexOfAccount = ia;
-                accountType = accountTypeList.get(indexOfAccount);
-                balanceFloat = balanceList.get(indexOfAccount);
+            // Check if a matching user is found
+            if (matchingUser.isPresent()) {
+                Users user = matchingUser .get(); // Get the matching user
+                indexOfAccount = userAccounts.indexOf(user); // Get the index of the matching user
+                accountType = accountTypeList.get(indexOfAccount); // Get the account type
+                balanceFloat = balanceList.get(indexOfAccount); // Get the balance
+                return true; // Return true if a match is found
             }
         }
-        if(usernameMatches && passwordMatches) {
-            return true;
+        return false;
 
-        }
-        else{
-            return false;
-        }
+//        if(usernamesList != null && passwordsList != null) {
+//            if (!usernamesList.isEmpty() && !passwordsList.isEmpty()) {
+//                for(int i = 0; i < usernamesList.size(); i++){
+//                    if(usernamesList.get(i).equals(usrname)){
+//                        usernameMatches = true;
+//                        ia = i;
+//
+//                    }
+//
+//                }
+//                for(int i =0; i < passwordsList.size(); i++){
+//                    if(passwordsList.get(i).equals(passwrd)){
+//                        passwordMatches = true;
+//                        ia = i;
+//                    }
+//                }
+//                indexOfAccount = ia;
+//                accountType = accountTypeList.get(indexOfAccount);
+//                balanceFloat = balanceList.get(indexOfAccount);
+//            }
+//        }
+
+
 
     }
 

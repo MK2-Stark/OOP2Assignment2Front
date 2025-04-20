@@ -1,4 +1,8 @@
 import java.util.Scanner;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Main {
 
@@ -10,6 +14,15 @@ public class Main {
 
         int mainOptionSelected;
         boolean isRunning = true;
+
+        //Using Date/Time API for getting current date and time
+        LocalDate currentDate = LocalDate.now();
+        LocalTime currentTime = LocalTime.now();
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+        System.out.println("Current Date: " + currentDate.format(dateFormatter));
+        System.out.println("Current Time: " + currentTime.format(timeFormatter));
 
         while (isRunning) {
 
