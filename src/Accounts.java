@@ -205,10 +205,34 @@ public class Accounts implements IBankAccount{
                         accountTypeList.add(accountType);
                         balanceList.add(0.0F);
 
-                        //The use of streams
-                        System.out.println("Accounts usernames arraylist: "+ usernamesList.stream().skip(usernamesList.size() - 1).findFirst().orElse(null));
-                        System.out.println("Accounts passwords arraylist: "+ passwordsList.stream().skip(passwordsList.size() - 1).findFirst().orElse(null));
-                        System.out.println("Accounts account type arraylist: "+ accountTypeList.stream().skip(accountTypeList.size() - 1).findFirst().orElse(null));
+                        //The use of streams to print out the account that was just created  back to the user who created it
+                        System.out.println(
+                                "Accounts username: " +
+                                        userAccounts.stream()
+                                                .skip(userAccounts.size() - 1)
+                                                .map(Users::username)
+                                                .findFirst()
+                                                .orElse(null)
+                        );
+
+                        System.out.println(
+                                "Accounts password: " +
+                                        userAccounts.stream()
+                                                .skip(userAccounts.size() - 1)
+                                                .map(Users::password)
+                                                .findFirst()
+                                                .orElse(null)
+                        );
+
+                        System.out.println(
+                                "Accounts account type: " +
+                                        userAccounts.stream()
+                                                .skip(userAccounts.size() - 1)
+                                                .map(Users::accountType)
+                                                .findFirst()
+                                                .orElse(null)
+                        );
+
 
 
                         isMainMenu = true;
@@ -236,10 +260,34 @@ public class Accounts implements IBankAccount{
                         accountTypeList.add(accountType);
                         balanceList.add(0.0F);
 
-                        //The use of streams
-                        System.out.println("Accounts usernames arraylist: "+ usernamesList.stream().skip(usernamesList.size() - 1).findFirst().orElse(null));
-                        System.out.println("Accounts passwords arraylist: "+ passwordsList.stream().skip(passwordsList.size() - 1).findFirst().orElse(null));
-                        System.out.println("Accounts account type arraylist: "+ accountTypeList.stream().skip(accountTypeList.size() - 1).findFirst().orElse(null));
+                        //The use of streams to print out the account that was just created  back to the user who created it
+                        System.out.println(
+                                "Accounts username: " +
+                                        userAccounts.stream()
+                                                .skip(userAccounts.size() - 1)
+                                                .map(Users::username)
+                                                .findFirst()
+                                                .orElse(null)
+                        );
+
+                        System.out.println(
+                                "Accounts password: " +
+                                        userAccounts.stream()
+                                                .skip(userAccounts.size() - 1)
+                                                .map(Users::password)
+                                                .findFirst()
+                                                .orElse(null)
+                        );
+
+                        System.out.println(
+                                "Accounts account type: " +
+                                        userAccounts.stream()
+                                                .skip(userAccounts.size() - 1)
+                                                .map(Users::accountType)
+                                                .findFirst()
+                                                .orElse(null)
+                        );
+
 
 
                         isMainMenu = true;
