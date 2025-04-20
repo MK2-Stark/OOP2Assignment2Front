@@ -1,4 +1,4 @@
-public sealed class Account permits CheckingAccount, SavingsAccount {
+public sealed class Account permits BasicAccount, SavingsAccount, BusinessAccount {
 
     protected final String accountNumber;
 

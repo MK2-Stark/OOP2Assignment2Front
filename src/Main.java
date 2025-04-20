@@ -33,119 +33,38 @@ public class Main {
                 mainOptionSelected = scanner.nextInt();
                 scanner.nextLine();
 
-                switch (mainOptionSelected) {
+                String action = switch (mainOptionSelected) {
                     //lOGIN OPTION
-                    case 1:
+                    case 1 -> {
                         System.out.println("Option 1 Selected");
-
-                        //isMainMenu = false;
                         accounts.setMainBool(false);
-                        //isCreateView = false;
                         accounts.setCreateViewBool(false);
-                        //isLoginView= true;
                         accounts.setLoginViewBool(true);
                         accounts.setAccountViewBool(false);
                         accounts.LoginView();
-
-
-                        break;
+                        yield "Login view";
+                    }
                     //CREATE ACCOUNT OPTION
-                    case 2:
+                    case 2 -> {
                         System.out.println("Option 2 Selected");
-
                         accounts.setMainBool(false);
-                        //isCreateView = false;
                         accounts.setCreateViewBool(true);
-                        //isLoginView= true;
                         accounts.setLoginViewBool(false);
                         accounts.setAccountViewBool(false);
                         accounts.createView();
-                        break;
-
-                    //QUIT OPTION
-                    case 3:
+                        yield "Create View";
+                    }
+                    case 3 -> {
                         System.out.println("Option 3 Selected: Quitting");
-                        //quit program
                         System.exit(0);
-                        break;
-                    default:
-                        System.out.println("That option does not exist here. try again");
-                }
+                        yield "Quitting"; // Yielding a value to indicate action
+                    }
+                    default -> {
+                        System.out.println("That option does not exist here. Try again");
+                        yield "Invalid Option"; // Yielding a value for invalid option
+                    }
+                };
             }
         }
     }
-
-
-//    private static void LoginView() {
-//
-//        System.out.println("=============");
-//        System.out.println("Login view");
-//        System.out.println("=============");
-//        while(isLoginView && !isMainMenu && !isCreateView) {
-//            String usernameEntered;
-//            String passwordEntered;
-//            System.out.println("""
-//                            If You Want To Go Back To Main Menu Enter '0'.
-//                            For any following prompts in this view.
-//                            """);
-//
-//            System.out.println("Enter your username: ");
-//            usernameEntered = scanner.nextLine();
-//            if (usernameEntered.equals("0")) {
-//                isMainMenu = true;
-//                isCreateView = false;
-//                isLoginView = false;
-//                System.out.println("<--Going Back");
-//                break;
-//            }
-//
-//            System.out.println("Enter your password: ");
-//            passwordEntered = scanner.nextLine();
-//            if (passwordEntered.equals("0")) {
-//                isMainMenu = true;
-//                isCreateView = false;
-//                isLoginView = false;
-//                System.out.println("<--Going Back");
-//                break;
-//            }
-//        }
-//    }
-//
-//    private static void CreateView() {
-//        System.out.println("=============");
-//        System.out.println("Create Account View");
-//        System.out.println("=============");
-//
-//        while(isCreateView && !isLoginView && !isMainMenu) {
-//            String usernameEntered;
-//            String passwordEntered;
-//            System.out.println("""
-//                            If You Want To Go Back To Main Menu Enter '0'.
-//                            For any following prompts in this view.
-//                            """);
-//
-//            System.out.println("Enter your username: ");
-//            usernameEntered = scanner.nextLine();
-//            if (usernameEntered.equals("0")) {
-//                isMainMenu = false;
-//                isCreateView = true;
-//                isLoginView = false;
-//                System.out.println("<--Going Back");
-//                break;
-//
-//            }
-//            System.out.println("Enter your password: ");
-//            passwordEntered = scanner.nextLine();
-//            if (passwordEntered.equals("0")) {
-//                isMainMenu = false;
-//                isCreateView = true;
-//                isLoginView = false;
-//                System.out.println("<--Going Back");
-//                break;
-//            }
-//
-//
-//        }
-//    }
-
 }
