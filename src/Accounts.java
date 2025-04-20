@@ -145,9 +145,11 @@ public class Accounts implements IBankAccount{
                         accountTypeList.add(accountType);
                         balanceList.add(0.0F);
 
-                        System.out.println("Accounts usernames arraylist: "+ usernamesList);
-                        System.out.println("Accounts passwords arraylist: "+ passwordsList);
-                        System.out.println("Accounts account type arraylist: "+ accountTypeList);
+                        //The use of streams
+                        System.out.println("Accounts usernames arraylist: "+ usernamesList.stream().skip(usernamesList.size() - 1).findFirst().orElse(null));
+                        System.out.println("Accounts passwords arraylist: "+ passwordsList.stream().skip(passwordsList.size() - 1).findFirst().orElse(null));
+                        System.out.println("Accounts account type arraylist: "+ accountTypeList.stream().skip(accountTypeList.size() - 1).findFirst().orElse(null));
+
 
                         isMainMenu = true;
                         isCreateView = false;
@@ -175,9 +177,10 @@ public class Accounts implements IBankAccount{
                         accountTypeList.add(accountType);
                         balanceList.add(0.0F);
 
-                        System.out.println("Accounts usernames arraylist: "+ usernamesList);
-                        System.out.println("Accounts passwords arraylist: "+ passwordsList);
-                        System.out.println("Accounts account type arraylist: "+ accountTypeList);
+                        //The use of streams
+                        System.out.println("Accounts usernames arraylist: "+ usernamesList.stream().skip(usernamesList.size() - 1).findFirst().orElse(null));
+                        System.out.println("Accounts passwords arraylist: "+ passwordsList.stream().skip(passwordsList.size() - 1).findFirst().orElse(null));
+                        System.out.println("Accounts account type arraylist: "+ accountTypeList.stream().skip(accountTypeList.size() - 1).findFirst().orElse(null));
 
 
                         isMainMenu = true;
@@ -205,10 +208,10 @@ public class Accounts implements IBankAccount{
                         accountTypeList.add(accountType);
                         balanceList.add(0.0F);
 
-
-                        System.out.println("Accounts usernames arraylist: "+ usernamesList);
-                        System.out.println("Accounts passwords arraylist: "+ passwordsList);
-                        System.out.println("Accounts account type arraylist: "+ accountTypeList);
+                        //The use of streams
+                        System.out.println("Accounts usernames arraylist: "+ usernamesList.stream().skip(usernamesList.size() - 1).findFirst().orElse(null));
+                        System.out.println("Accounts passwords arraylist: "+ passwordsList.stream().skip(passwordsList.size() - 1).findFirst().orElse(null));
+                        System.out.println("Accounts account type arraylist: "+ accountTypeList.stream().skip(accountTypeList.size() - 1).findFirst().orElse(null));
 
 
                         isMainMenu = true;
