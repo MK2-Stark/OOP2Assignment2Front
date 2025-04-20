@@ -2,6 +2,13 @@ import java.util.ArrayList;
 import java.util.Optional;
 import java.util.Scanner;
 
+// I did use AI to generate this commented field as a sort of documentation and explanation for the user. To save myself time. But the code is mine though, with some internet&Lecture notes help.
+/** Documentation & Explanation For The Reader:
+ * The Accounts class represents a system for managing user bank accounts, where users can log in, create accounts,
+ * and perform various operations such as viewing account details, depositing money, and withdrawing money.
+ * This class implements the IBankAccount interface to provide deposit and withdrawal functionality.
+ * It also uses encapsulation to manage internal fields and states.
+ */
 public class Accounts implements IBankAccount{
 
     //strings

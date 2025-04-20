@@ -1,5 +1,15 @@
 import java.util.ArrayList;
 
+// I did use AI to generate this commented field as a sort of documentation and explanation for the user. To save myself time. But the code is mine though, with some internet&Lecture notes help.
+/** Documentation & Explanation For The Reader.
+ * The Validator class implements validation logic to validate usernames
+ * and passwords based on specific criteria. It also manages existing
+ * usernames and passwords by updating their respective lists and ensures
+ * that user credentials are valid prior to creation.
+ *
+ * This class interacts with an Accounts object to retrieve the list of
+ * existing usernames and passwords.
+ */
 public class Validator implements IValidator {
 
     private Accounts valAccounds;

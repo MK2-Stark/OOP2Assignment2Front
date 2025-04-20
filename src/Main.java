@@ -4,6 +4,28 @@ import java.time.LocalTime;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+// I did use AI to generate this commented field as a sort of documentation and explanation for the user. To save myself time. But the code is mine though, with some internet&Lecture notes help.
+//I figured they would be a nice little "nice to have" touch/addition to include for the reader.
+/** Documentation & Explanation For The Reader.
+ * The Main class serves as the entry point for the Simple Banking App program.
+ * It provides a console-based interface for users to interact with the application,
+ * allowing them to log in, create accounts, or quit the program. The class also
+ * displays the current date and time upon startup using Java's Date/Time API.
+ *
+ * Main program functionalities:
+ * - Display the main menu with options to log in, create an account, or exit the program.
+ * - Handle user input to navigate between different features of the application.
+ * - Manage the current application state through the Accounts object.
+ *
+ * Application Context:
+ * - This application uses local data structures for storing account information.
+ * - The application does not support data persistence; all data is reset upon restarting.
+ *
+ * The program leverages features such as `Scanner` for user input and `switch` statements
+ * for option handling. The main loop (`while`) ensures the application continues running
+ * until the user chooses to exit.
+ */
+
 public class Main {
 
     private static Scanner scanner = new Scanner(System.in);
