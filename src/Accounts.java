@@ -81,7 +81,7 @@ public class Accounts implements IBankAccount{
                 isCreateView = false;
                 isLoginView = false;
                 isUsersAccountView = true;
-                ViewUsersAccount(indexOfAccount, usernameEntered, accountTypeList.get(indexOfAccount), balanceList.get(indexOfAccount));
+                ViewUsersAccount(indexOfAccount, userAccounts.get(indexOfAccount).username(), userAccounts.get(indexOfAccount).accountType(), userAccounts.get(indexOfAccount).balance());
             }
             else{
                 System.out.println("Login Failed, This Username and/or password either doesnt exist. Try again");
@@ -318,10 +318,10 @@ public class Accounts implements IBankAccount{
 
             // Check if a matching user is found, and get the info
             if (matchingUser.isPresent()) {
-                Users user = matchingUser .get();
+                Users user = matchingUser.get();
                 indexOfAccount = userAccounts.indexOf(user);
-                accountType = accountTypeList.get(indexOfAccount);
-                balanceFloat = balanceList.get(indexOfAccount);
+                accountType = userAccounts.get(indexOfAccount).accountType();
+                balanceFloat = userAccounts.get(indexOfAccount).balance();
                 return true;
             }
         }
@@ -340,7 +340,7 @@ public class Accounts implements IBankAccount{
 
         while(isUsersAccountView && !isCreateView && !isLoginView && !isMainMenu){
             int actionSelected;
-            System.out.println("New Account Balance: " + balanceList.get(index));
+            System.out.println("New Account Balance: " + userAccounts.get(indexOfAccount).balance());
 
 
             System.out.println("What do you want to do?");
@@ -357,7 +357,7 @@ public class Accounts implements IBankAccount{
                     System.out.println("Enter Amount To Deposit (Float Value): ");
                     float depositAmount = scan.nextFloat();
                     scan.nextLine();
-                    float newBalance = balanceList.get(index) + depositAmount;
+                    float newBalance = userAccounts.get(indexOfAccount).balance() + depositAmount;
                     DepositMoney(index, newBalance);
                     break;
 
@@ -366,7 +366,7 @@ public class Accounts implements IBankAccount{
                     System.out.println("Enter Amount To Withdraw (Float Value): ");
                     float withdrawAmount = scan.nextFloat();
                     scan.nextLine();
-                    float newBalance2 = balanceList.get(index) - withdrawAmount;
+                    float newBalance2 = userAccounts.get(indexOfAccount).balance() - withdrawAmount;
                     WithdrawMoney(index, newBalance2);
                     break;
 
@@ -393,15 +393,19 @@ public class Accounts implements IBankAccount{
     @Override
     public void DepositMoney(int index,float amount)
     {
-        balanceList.set(index, amount);
-        System.out.println("New Account Balance: " + amount);
+        Users thisUser = userAccounts.get(index);
+        Users updatedUser  = new Users(thisUser.username(), thisUser.password(), thisUser.accountType(), thisUser.balance() + amount);
+        userAccounts.set(index, updatedUser);
+        System.out.println("New Account Balance: " + userAccounts.get(indexOfAccount).balance());
         System.out.println("Successfully Deposited");
     }
 
     @Override
     public void WithdrawMoney(int index, float amount) {
-        balanceList.set(index, amount);
-        System.out.println("New Account Balance: " + amount);
+        Users thisUser = userAccounts.get(index);
+        Users updatedUser  = new Users(thisUser.username(), thisUser.password(), thisUser.accountType(), thisUser.balance() - amount);
+        userAccounts.set(index, updatedUser);
+        System.out.println("New Account Balance: " + userAccounts.get(indexOfAccount).balance());
         System.out.println("Successfully Withdrawn");
     }
 
