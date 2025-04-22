@@ -16,7 +16,7 @@ import java.time.format.DateTimeFormatter;
  * - Display the main menu with options to log in, create an account, or exit the program.
  * - Handle user input to navigate between different features of the application.
  * - Manage the current application state through the Accounts object.
- *
+ *0
  * Application Context:
  * - This application uses local data structures for storing account information.
  * - The application does not support data persistence; all data is reset upon restarting.

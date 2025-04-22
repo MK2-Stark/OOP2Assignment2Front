@@ -45,7 +45,9 @@ public class Accounts implements IBankAccount{
 
         this.validator = new Validator(this);
     }
+
     //Login and Create Views
+
     public void LoginView() {
 
         System.out.println("=============");
@@ -80,6 +82,8 @@ public class Accounts implements IBankAccount{
                 System.out.println("<--Going Back");
                 break;
             }
+            //AS A USER I WANT TO BE ABLE TO LOG INTO MY BANK ACCOUNT
+            //AS A BANK I WANT TO ALLOW SECURE LOGIN FOR MY USERS
             isValidLogin = validateLogIntoAccount(usernameEntered, passwordEntered);
             if (isValidLogin) {
                 System.out.println("Login Successful");
@@ -139,6 +143,8 @@ public class Accounts implements IBankAccount{
             System.out.println("Please Select What Type Of Account You Would Like to Create From Available Options: ");
             accTypeSelected = scan.nextInt();
             scan.nextLine();
+            //AS A USER I WANT TO BE ABLE TO CREATE AN ACCOUNT
+            //AS A BANK I WANT THE USER TO BE ABLE TO SECURELY CREATE THEIR ACCOUNT AND STORE THEIR ACCOUNT DATA TO KEEP RECORD
             //successful creation
             switch (accTypeSelected) {
                 case 1:
